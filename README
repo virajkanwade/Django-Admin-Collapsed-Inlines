@@ -1,0 +1,21 @@
+Django does not allow collapsible inlines.
+
+To enable collapsible inlines, include the js and css into your admin media for the admin class.
+
+class MyAdmin(admin.ModelAdmin):
+    inlines = [inline1, inline2, ...]
+
+    class Media:
+        css = {
+            'all': [
+                "%scss/django_admin_collapsed_inlines.css" % settings.STATIC_URL,
+            ]
+        }
+
+        js = [
+            "%sjs/jQuery.js" % settings.STATIC_URL,
+            "%sjs/django_admin_collapsed_inlines.js" % settings.STATIC_URL,
+        ]
+
+
+The above js and css works for both TabularInline and StackedInline.
